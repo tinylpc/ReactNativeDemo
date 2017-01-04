@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TellPatientConditionProgress" parent="@style/Theme.Sherlock.Light">
+        <attr name="mRingMaxRadius" format="dimension"></attr>
+        <attr name="mStrokeWidth" format="dimension"></attr>
+        <attr name="mStaticRadius" format="dimension"></attr>
+        <attr name="mRingColor" format="color"></attr>
+        <attr name="mRingColorbg" format="color"></attr>
+        <attr name="centerColor" format="color"></attr>
+        <attr name="trackColor" format="color"></attr>
+    </declare-styleable>
+</resources>

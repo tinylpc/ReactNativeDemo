@@ -1,0 +1,19 @@
+{
+  "name": "tiny",
+  "version": "1.0.0",
+  "description": "this is a test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "bundle-android": "react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output app/src/main/assets/index.android.bundle --sourcemap-output app/src/main/assets/index.android.map --assets-dest android/app/src/main/res/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.4.1",
+    "react-native": "^0.39.2",
+    "react-native-tab-navigator": "^0.3.3",
+    "react-static-container": "^1.0.1"
+  }
+}
