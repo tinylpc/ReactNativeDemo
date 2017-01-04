@@ -38,6 +38,7 @@ export default class SecondScreen extends React.Component {
                         <Text>1111</Text>
                     </View>
                 </TabNavigator.Item>
+
                 < TabNavigator.Item
                     selected={this.state.selectedTab === doc}
                     title={doc}
