@@ -11,6 +11,7 @@ var doc = '医生';
 var community = '社区医院';
 var sickbag = '锦囊';
 var me = '我';
+import HomeView from './HomeView'
 export default class SecondScreen extends React.Component {
     constructor(props) {
         super(props)
@@ -34,12 +35,10 @@ export default class SecondScreen extends React.Component {
                         style={{width: 24, height: 24}} source={require('image!tabhomehl')}/>}
                     badgeText=""
                     onPress={() => this.setState({selectedTab: home})}>
-                    <View>
-                        <Text>1111</Text>
-                    </View>
-                </TabNavigator.Item>
+                    {<HomeView/>}
+                </TabNavigator.Item >
 
-                < TabNavigator.Item
+                <TabNavigator.Item
                     selected={this.state.selectedTab === doc}
                     title={doc}
                     titleStyle={{color: '#a8a39e'}}
@@ -54,7 +53,7 @@ export default class SecondScreen extends React.Component {
                         <Text>22222</Text>
                     </View>
                 </TabNavigator.Item>
-                < TabNavigator.Item
+                <TabNavigator.Item
                     selected={this.state.selectedTab === community}
                     title={community}
                     titleStyle={{color: '#a8a39e'}}
@@ -69,7 +68,7 @@ export default class SecondScreen extends React.Component {
                         <Text>22222</Text>
                     </View>
                 </TabNavigator.Item>
-                < TabNavigator.Item
+                <TabNavigator.Item
                     selected={this.state.selectedTab === sickbag}
                     title={sickbag}
                     titleStyle={{color: '#a8a39e'}}
@@ -84,7 +83,7 @@ export default class SecondScreen extends React.Component {
                         <Text>22222</Text>
                     </View>
                 </TabNavigator.Item>
-                < TabNavigator.Item
+                <TabNavigator.Item
                     selected={this.state.selectedTab === me}
                     title={me}
                     titleStyle={{color: '#a8a39e'}}
