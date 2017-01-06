@@ -35,9 +35,9 @@ public class MainActivity extends ReactActivity implements DefaultHardwareBackBt
                 .setBundleAssetName("index.android.bundle")
                 .setJSMainModuleName("index.android")
                 .addPackage(new MainReactPackage())
-                //需要在这个地方注册才行
                 .addPackage(new MyToastPackage())
                 .addPackage(new MyTellProgressPackage())
+                .addPackage(new PermissionAndroidPackage()) //<<--------这一行
                 .setUseDeveloperSupport(BuildConfig.DEBUG)
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();

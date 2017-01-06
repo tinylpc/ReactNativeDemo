@@ -5,9 +5,10 @@ import {
     Text,
     Image,
     Dimensions,
-    StyleSheet
+    StyleSheet,
 } from 'react-native';
 import ViewPager from './ViewPager/ViewPager';
+import TinyPermissionAndroid from './TinyPermissionAndroid';
 var screenWidth = Dimensions.get('window').width;
 var pager;
 var IMGS = [
@@ -40,7 +41,8 @@ export default class HomeView extends React.Component {
                 this.setState({
                     dataSource: this.state.dataSource.cloneWithPages(IMGS2),
                 }),
-                    this.pager.setCurrentPageZero()
+                    this.pager.setCurrentPageZero();
+                this._requestSDcardPermission();
             }
             , 5000);
     }
@@ -49,7 +51,7 @@ export default class HomeView extends React.Component {
         return (
             <View>
                 <View style={styles.pager}>
-                    <ViewPager ref={component=>this.pager=component}
+                    <ViewPager ref={component => this.pager = component}
                                initialPage={0}
                                dataSource={this.state.dataSource}
                                renderPage={this._renderPage}
@@ -60,6 +62,19 @@ export default class HomeView extends React.Component {
             </View>
         )
     };
+
+    async _requestSDcardPermission() {
+        try {
+            var permissions = [];
+            permissions[0] = TinyPermissionAndroid.WRITE_EXTERNAL_STORAGE;
+            var {
+                isGranted
+            } =await TinyPermissionAndroid.requestPermission(permissions);
+            alert(isGranted)
+        } catch (err) {
+            alert(err)
+        }
+    }
 
     _renderPage(data, pageID) {
         return (
