@@ -18,7 +18,11 @@ export default class SecondScreen extends React.Component {
         this.state = {
             name: 'jjj',
             selectedTab: home,
+            docVisible: null,
         }
+        setTimeout(() => {
+            this.setState({docVisible: '123'})
+        }, 3000)
     }
 
     render() {
@@ -38,21 +42,24 @@ export default class SecondScreen extends React.Component {
                     {<HomeView/>}
                 </TabNavigator.Item >
 
-                <TabNavigator.Item
-                    selected={this.state.selectedTab === doc}
-                    title={doc}
-                    titleStyle={{color: '#a8a39e'}}
-                    selectedTitleStyle={{color: '#fc6a74'}}
-                    renderIcon={() => <Image style={{width: 24, height: 24}} source={require('image!tabdocnor')}/>}
-                    renderSelectedIcon={() => <Image style={{
+                {
+                    this.state.docVisible == null ? (null) : (
+                            <TabNavigator.Item
+                                selected={this.state.selectedTab === doc}
+                                title={doc}
+                                titleStyle={{color: '#a8a39e'}}
+                                selectedTitleStyle={{color: '#fc6a74'}}
+                                renderIcon={() => <Image style={{width: 24, height: 24}} source={require('image!tabdocnor')}/>}
+                                renderSelectedIcon={() => <Image style={{
                         width: 24,
                         height: 24
                     }} source={require('image!tabdochl')}/>}
-                    onPress={() => this.setState({selectedTab: doc})}>
-                    <View>
-                        <Text>22222</Text>
-                    </View>
-                </TabNavigator.Item>
+                                onPress={() => this.setState({selectedTab: doc})}>
+                                <View>
+                                    <Text>22222</Text>
+                                </View>
+                            </TabNavigator.Item>)
+                }
                 <TabNavigator.Item
                     selected={this.state.selectedTab === community}
                     title={community}
@@ -65,7 +72,7 @@ export default class SecondScreen extends React.Component {
                     }} source={require('image!tabnearbyhl')}/>}
                     onPress={() => this.setState({selectedTab: community})}>
                     <View>
-                        <Text>22222</Text>
+                        <Text>33333</Text>
                     </View>
                 </TabNavigator.Item>
                 <TabNavigator.Item
@@ -80,7 +87,7 @@ export default class SecondScreen extends React.Component {
                     }} source={require('image!tabacepackhl')}/>}
                     onPress={() => this.setState({selectedTab: sickbag})}>
                     <View>
-                        <Text>22222</Text>
+                        <Text>44444</Text>
                     </View>
                 </TabNavigator.Item>
                 <TabNavigator.Item
@@ -95,9 +102,12 @@ export default class SecondScreen extends React.Component {
                     }} source={require('image!tabpersonalhl')}/>}
                     onPress={() => this.setState({selectedTab: me})}>
                     <View>
-                        <Text>22222</Text>
+                        <Text>55555</Text>
                     </View>
                 </TabNavigator.Item>
+                {
+
+                }
             </TabNavigator>
         );
     }

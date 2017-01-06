@@ -7,7 +7,7 @@ import {
     Dimensions,
     StyleSheet
 } from 'react-native';
-var ViewPager = require('react-native-viewpager');
+import ViewPager from './ViewPager/ViewPager';
 var screenWidth = Dimensions.get('window').width;
 var pager;
 var IMGS = [
@@ -35,10 +35,13 @@ export default class HomeView extends React.Component {
             dataSource: ds.cloneWithPages(IMGS),
         }
 
-        setTimeout(() =>
+        setTimeout(() => {
+
                 this.setState({
                     dataSource: this.state.dataSource.cloneWithPages(IMGS2),
-                })
+                }),
+                    this.pager.setCurrentPageZero()
+            }
             , 5000);
     }
 
