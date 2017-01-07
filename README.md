@@ -2,4 +2,3 @@
 
 现支持navigator，tab，ViewPager，权限申请等功能
 
-![image](https://github.com/tinylpc/ReactNativeDemo/blob/master/guide.gif)
