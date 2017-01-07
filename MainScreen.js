@@ -15,7 +15,7 @@ export default class MainScreen extends React.Component {
             content: 'mainscreen'
         };
 
-        this, setTimeout(this._toSecond.bind(this), 3000);
+        this, setTimeout(this._toSecond.bind(this), 5000);
     }
 
     render() {

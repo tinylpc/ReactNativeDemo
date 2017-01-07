@@ -7,9 +7,9 @@ import {
 } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 var home = '首页';
-var doc = '医生';
-var community = '社区医院';
-var sickbag = '锦囊';
+var doc = '测试';
+var community = '附近';
+var sickbag = '论坛';
 var me = '我';
 import HomeView from './HomeView'
 export default class SecondScreen extends React.Component {

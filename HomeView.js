@@ -20,7 +20,7 @@ var IMGS = [
 var IMGS2 = [
     'http://photo.enterdesk.com/2010-3-12/enterdesk.com-36242C8529388B803FF0349DEEB18C9D.JPG',
     'http://photo.enterdesk.com/2010-12-4/enterdesk.com-08C3B65FA30A087D797C364754998679.jpg',
-    'http://img3.imgtn.bdimg.com/it/u=2582803538,3670774271&fm=23&gp=0.jpg',
+    'http://image.tianjimedia.com/uploadImages/2013/219/H0J6OH3M5790.jpg',
     'http://d.hiphotos.baidu.com/zhidao/pic/item/91529822720e0cf37475ecc80c46f21fbe09aa07.jpg',
     'http://pic.3h3.com/up/2015-1/20151117170929166317.jpg',
     'http://image.tianjimedia.com/uploadImages/2013/219/H0J6OH3M5790.jpg',
@@ -42,9 +42,12 @@ export default class HomeView extends React.Component {
                     dataSource: this.state.dataSource.cloneWithPages(IMGS2),
                 }),
                     this.pager.setCurrentPageZero();
-                this._requestSDcardPermission();
             }
             , 5000);
+
+        setTimeout(()=> {
+            this._requestSDcardPermission();
+        }, 10000)
     }
 
     render() {
