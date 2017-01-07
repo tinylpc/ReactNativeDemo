@@ -23,7 +23,7 @@ export default class MainScreen extends React.Component {
         return (
             <View>
                 <Image style={{width: ScreenWidth, height: ScreenHeight}}
-                       source={require('image!launchscreen')}
+                       source={{uri:'http://bpic.588ku.com/back_pic/03/87/96/9057d3c08d43423.jpg!/fw/650/quality/90/unsharp/true/compress/true'}}
                        resizeMode={Image.resizeMode.stretch}></Image>
             </View>
         );

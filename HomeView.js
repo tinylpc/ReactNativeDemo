@@ -12,19 +12,19 @@ import TinyPermissionAndroid from './TinyPermissionAndroid';
 var screenWidth = Dimensions.get('window').width;
 var pager;
 var IMGS = [
-    'https://images.unsplash.com/photo-1441742917377-57f78ee0e582?h=1024',
-    'https://images.unsplash.com/photo-1441716844725-09cedc13a4e7?h=1024',
-    'https://images.unsplash.com/photo-1441448770220-76743f9e6af6?h=1024',
+    'http://2t.5068.com/uploads/allimg/160323/60-1603231G347.jpg',
+    'http://image.tianjimedia.com/uploadImages/2013/219/UW4KH582U670.jpg',
+    'http://photo.enterdesk.com/2010-12-16/enterdesk.com-CA680984C1DE707177F4DB18C7F5C082.jpg',
 ];
 
 var IMGS2 = [
-    'https://images.unsplash.com/photo-1441742917377-57f78ee0e582?h=1024',
-    'https://images.unsplash.com/photo-1441716844725-09cedc13a4e7?h=1024',
-    'https://images.unsplash.com/photo-1441448770220-76743f9e6af6?h=1024',
-    'https://images.unsplash.com/photo-1441260038675-7329ab4cc264?h=1024',
-    'https://images.unsplash.com/photo-1441126270775-739547c8680c?h=1024',
-    'https://images.unsplash.com/photo-1440964829947-ca3277bd37f8?h=1024',
-    'https://images.unsplash.com/photo-1440847899694-90043f91c7f9?h=1024'
+    'http://photo.enterdesk.com/2010-3-12/enterdesk.com-36242C8529388B803FF0349DEEB18C9D.JPG',
+    'http://photo.enterdesk.com/2010-12-4/enterdesk.com-08C3B65FA30A087D797C364754998679.jpg',
+    'http://img3.imgtn.bdimg.com/it/u=2582803538,3670774271&fm=23&gp=0.jpg',
+    'http://d.hiphotos.baidu.com/zhidao/pic/item/91529822720e0cf37475ecc80c46f21fbe09aa07.jpg',
+    'http://pic.3h3.com/up/2015-1/20151117170929166317.jpg',
+    'http://image.tianjimedia.com/uploadImages/2013/219/H0J6OH3M5790.jpg',
+    'http://pic.3h3.com/up/2015-1/20151117170929141600.jpg'
 ];
 export default class HomeView extends React.Component {
     constructor(props) {
