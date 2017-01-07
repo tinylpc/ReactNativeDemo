@@ -14,6 +14,7 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.common.LifecycleState;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
+import com.tiny.permissionandroid.PermissionAndroidPackage;
 
 import java.util.Arrays;
 import java.util.List;
