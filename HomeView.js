@@ -9,8 +9,11 @@ import {
 } from 'react-native';
 import ViewPager from './ViewPager/ViewPager';
 import TinyPermissionAndroid from './TinyPermissionAndroid';
-import Swiper from './Swiper';
+var ScrollableTabView = require('react-native-scrollable-tab-view');
+import FacebookTabBar from './FacebookTabBar';
+var _facebookTabBar;
 var screenWidth = Dimensions.get('window').width;
+var screenHeight = Dimensions.get('window').height;
 var pager;
 var IMGS = [
     'http://2t.5068.com/uploads/allimg/160323/60-1603231G347.jpg',
@@ -43,6 +46,7 @@ export default class HomeView extends React.Component {
                     dataSource: this.state.dataSource.cloneWithPages(IMGS2),
                 }),
                     this.pager.setCurrentPageZero();
+                this._facebookTabBar.updatePosition();
             }
             , 5000);
 
@@ -62,15 +66,17 @@ export default class HomeView extends React.Component {
                                isLoop={true}
                                autoPlay={true}/>
                 </View>
-                <Swiper height={200}
-                        loop={true}
-                        index={0}
-                        autoplay={true}
-                        horizontal={false}>
-                    {
-                        this.renderText()
-                    }
-                </Swiper>
+                <View style={{height: screenHeight - 300}}>
+                    <ScrollableTabView initialPage={0} tabBarUnderlineStyle={{backgroundColor: '#11cab0'}}
+                                       tabBarActiveTextColor="#991cbf" tabBarInactiveTextColor="#11cfa5"
+                                       renderTabBar={() => <FacebookTabBar
+                                           ref={(component) => this._facebookTabBar = component}/>}>
+                        <Text tabLabel="React" style={{fontSize: 30}}>1111</Text>
+                        <Text tabLabel="Flow" style={{fontSize: 40}}>222222</Text>
+                        <Text tabLabel="Jest" style={{fontSize: 50}}>333333</Text>
+                        <Text tabLabel="haha" style={{fontSize: 50}}>444444</Text>
+                    </ScrollableTabView>
+                </View>
             </View>
         )
     };
