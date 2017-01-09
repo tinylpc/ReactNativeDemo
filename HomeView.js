@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import ViewPager from './ViewPager/ViewPager';
 import TinyPermissionAndroid from './TinyPermissionAndroid';
+import Swiper from './Swiper';
 var screenWidth = Dimensions.get('window').width;
 var pager;
 var IMGS = [
@@ -45,7 +46,7 @@ export default class HomeView extends React.Component {
             }
             , 5000);
 
-        setTimeout(()=> {
+        setTimeout(() => {
             this._requestSDcardPermission();
         }, 10000)
     }
@@ -61,10 +62,28 @@ export default class HomeView extends React.Component {
                                isLoop={true}
                                autoPlay={true}/>
                 </View>
-                <Text>111111</Text>
+                <Swiper height={200}
+                        loop={true}
+                        index={0}
+                        autoplay={true}
+                        horizontal={false}>
+                    {
+                        this.renderText()
+                    }
+                </Swiper>
             </View>
         )
     };
+
+    renderText() {
+        var texts = [];
+        for (var i = 0; i < 5; i++) {
+            texts.push(
+                <Text key={i}>sgfhjsgfhj</Text>
+            );
+        }
+        return texts;
+    }
 
     async _requestSDcardPermission() {
         try {
