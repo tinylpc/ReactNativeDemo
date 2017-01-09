@@ -13,6 +13,7 @@ var sickbag = '论坛';
 var me = '我';
 import HomeView from './HomeView'
 import SecondView from './SecondView'
+import SplashScreen from 'react-native-splash-screen'
 export default class SecondScreen extends React.Component {
     constructor(props) {
         super(props)
@@ -26,6 +27,9 @@ export default class SecondScreen extends React.Component {
         }, 3000)
     }
 
+    componentDidMount() {
+        SplashScreen.hide()
+    }
     render() {
         var that = this;
         return (

@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 
+import com.cboy.rn.splashscreen.SplashScreen;
+import com.cboy.rn.splashscreen.SplashScreenReactPackage;
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactPackage;
@@ -28,6 +30,7 @@ public class MainActivity extends ReactActivity implements DefaultHardwareBackBt
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen.show(this);
         super.onCreate(savedInstanceState);
 
         mReactRootView = new ReactRootView(this);
@@ -39,6 +42,7 @@ public class MainActivity extends ReactActivity implements DefaultHardwareBackBt
                 .addPackage(new MyToastPackage())
                 .addPackage(new MyTellProgressPackage())
                 .addPackage(new PermissionAndroidPackage()) //<<--------这一行
+                .addPackage(new SplashScreenReactPackage())
                 .setUseDeveloperSupport(BuildConfig.DEBUG)
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();

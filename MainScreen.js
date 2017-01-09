@@ -8,6 +8,7 @@ import {
 import SecondScreen from './SecondScreen'
 var ScreenWidth = Dimensions.get('window').width;
 var ScreenHeight = Dimensions.get('window').height;
+
 export default class MainScreen extends React.Component {
     constructor(props) {
         super(props);
