@@ -12,6 +12,7 @@ var community = '附近';
 var sickbag = '论坛';
 var me = '我';
 import HomeView from './HomeView'
+import SecondView from './SecondView'
 export default class SecondScreen extends React.Component {
     constructor(props) {
         super(props)
@@ -49,11 +50,12 @@ export default class SecondScreen extends React.Component {
                                 title={doc}
                                 titleStyle={{color: '#a8a39e'}}
                                 selectedTitleStyle={{color: '#fc6a74'}}
-                                renderIcon={() => <Image style={{width: 24, height: 24}} source={require('image!tabdocnor')}/>}
+                                renderIcon={() => <Image style={{width: 24, height: 24}}
+                                                         source={require('image!tabdocnor')}/>}
                                 renderSelectedIcon={() => <Image style={{
-                        width: 24,
-                        height: 24
-                    }} source={require('image!tabdochl')}/>}
+                                    width: 24,
+                                    height: 24
+                                }} source={require('image!tabdochl')}/>}
                                 onPress={() => this.setState({selectedTab: doc})}>
                                 <View>
                                     <Text>22222</Text>
@@ -71,9 +73,9 @@ export default class SecondScreen extends React.Component {
                         height: 24
                     }} source={require('image!tabnearbyhl')}/>}
                     onPress={() => this.setState({selectedTab: community})}>
-                    <View>
-                        <Text>33333</Text>
-                    </View>
+                    {
+                        <SecondView/>
+                    }
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     selected={this.state.selectedTab === sickbag}
