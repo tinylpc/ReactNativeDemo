@@ -14,6 +14,7 @@ var me = '我';
 import HomeView from './HomeView'
 import SecondView from './SecondView'
 import SplashScreen from 'react-native-splash-screen'
+import ThirdView from './ThirdView'
 export default class SecondScreen extends React.Component {
     constructor(props) {
         super(props)
@@ -30,6 +31,7 @@ export default class SecondScreen extends React.Component {
     componentDidMount() {
         SplashScreen.hide()
     }
+
     render() {
         var that = this;
         return (
@@ -92,9 +94,9 @@ export default class SecondScreen extends React.Component {
                         height: 24
                     }} source={require('image!tabacepackhl')}/>}
                     onPress={() => this.setState({selectedTab: sickbag})}>
-                    <View>
-                        <Text>44444</Text>
-                    </View>
+                    {
+                        <ThirdView/>
+                    }
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     selected={this.state.selectedTab === me}
@@ -111,9 +113,6 @@ export default class SecondScreen extends React.Component {
                         <Text>55555</Text>
                     </View>
                 </TabNavigator.Item>
-                {
-
-                }
             </TabNavigator>
         );
     }
