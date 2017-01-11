@@ -7,7 +7,7 @@ import {
     Dimensions,
     StyleSheet,
 } from 'react-native';
-import ViewPager from './ViewPager/ViewPager';
+import ViewPager from 'tinyviewpager';
 import TinyPermissionAndroid from './TinyPermissionAndroid';
 var ScrollableTabView = require('react-native-scrollable-tab-view');
 import FacebookTabBar from './FacebookTabBar';
