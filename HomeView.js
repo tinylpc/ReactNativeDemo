@@ -63,6 +63,7 @@ export default class HomeView extends React.Component {
                                initialPage={0}
                                dataSource={this.state.dataSource}
                                renderPage={this._renderPage}
+                               horizontal={false}
                                isLoop={true}
                                autoPlay={true}/>
                 </View>

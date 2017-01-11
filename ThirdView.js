@@ -1,127 +1,94 @@
-/**
- * Created by tiny on 17/1/10.
- */
-import React, {Component} from 'react';
+import React from 'react';
 import {
     StyleSheet,
     Text,
     View,
-    ActivityIndicator,
-    ListView,
-    Dimensions
+    TouchableHighlight
 } from 'react-native';
 
-import PullList from './PullList/PullList';
-var pulllist;
+var GiftedListView = require('./GiftedListView/GiftedListView');
 
-export default class extends Component {
+export default class extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.dataSource = [{
-            id: 0,
-            title: 'this is the first.',
-        }];
-        this.state = {
-            list: (new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})).cloneWithRows(this.dataSource),
-        };
-        this.renderHeader = this.renderHeader.bind(this);
-        this.renderRow = this.renderRow.bind(this);
-        this.renderFooter = this.renderFooter.bind(this);
-        this.loadMore = this.loadMore.bind(this);
-        // this.loadMore();
-    }
-
-    onPullRelease(resolve) {
-        //do something
+    /**
+     * Will be called when refreshing
+     * Should be replaced by your own logic
+     * @param {number} page Requested page to fetch
+     * @param {function} callback Should pass the rows
+     * @param {object} options Inform if first load
+     */
+    _onFetch(page = 1, callback, options) {
         setTimeout(() => {
-            resolve();
-        }, 3000);
+            var rows = ['row ' + ((page - 1) * 3 + 1), 'row ' + ((page - 1) * 3 + 2), 'row ' + ((page - 1) * 3 + 3)];
+            if (page === 6) {
+                callback(rows, {
+                    allLoaded: true, // the end of the list is reached
+                });
+            } else {
+                callback(rows);
+            }
+        }, 1000); // simulating network fetching
     }
 
-    topIndicatorRender(pulling, pullok, pullrelease) {
-        return <View
-            style={{flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: 1}}>
-            {pulling ? <Text>当前PullList状态: pulling...</Text> : null}
-            {pullok ? <Text>当前PullList状态: pullok......</Text> : null}
-            {pullrelease ? <Text>当前PullList状态: pullrelease......</Text> : null}
-        </View>;
+    /**
+     * When a row is touched
+     * @param {object} rowData Row data
+     */
+    _onPress(rowData) {
+        console.log(rowData + ' pressed');
+    }
+
+    /**
+     * Render a row
+     * @param {object} rowData Row data
+     */
+    _renderRowView(rowData) {
+        return (
+            <TouchableHighlight
+                style={styles.row}
+                underlayColor='#c8c7cc'
+                onPress={() => this._onPress(rowData).bind(this)}
+            >
+                <Text>{rowData}</Text>
+            </TouchableHighlight>
+        );
     }
 
     render() {
         return (
             <View style={styles.container}>
-                <PullList ref={(component) => this.pulllist = component}
-                          style={{}}
-                          onPullRelease={this.onPullRelease} topIndicatorRender={this.topIndicatorRender}
-                          topIndicatorHeight={60}
-                          renderHeader={this.renderHeader}
-                          dataSource={this.state.list}
-                          renderRow={this.renderRow}
-                          onEndReached={this.loadMore}
-                          onEndReachedThreshold={60}
-                          renderFooter={this.renderFooter}
+                <GiftedListView
+                    enableEmptySections={true}
+                    rowView={this._renderRowView}
+                    onFetch={this._onFetch}
+                    firstLoader={false} // display a loader for the first fetching
+                    pagination={true} // enable infinite scrolling using touch to load more
+                    refreshable={true} // enable pull-to-refresh for iOS and touch-to-refresh for Android
+                    withSections={false} // enable sections
+                    customStyles={{
+                        paginationView: {
+                            backgroundColor: '#eee',
+                        },
+                    }}
+
+                    refreshableTintColor="blue"
                 />
             </View>
         );
     }
-
-    renderHeader() {
-        return (
-            <View style={{height: 50, backgroundColor: '#eeeeee', alignItems: 'center', justifyContent: 'center'}}>
-                <ActivityIndicator size="small" color='#3398fc'/>
-                <Text>这边可以自定义UI</Text>
-            </View>
-        );
-    }
-
-    renderRow(item, sectionID, rowID, highlightRow) {
-        return (
-            <View style={{height: 50, backgroundColor: '#fafafa', alignItems: 'center', justifyContent: 'center'}}>
-                <Text>{item.title}</Text>
-            </View>
-        );
-    }
-
-    renderFooter() {
-        if (this.state.nomore) {
-            return null;
-        }
-        return (
-            <View style={{height: 100, backgroundColor: '#339baf'}}>
-                <ActivityIndicator />
-            </View>
-        );
-    }
-
-    loadMore() {
-        this.dataSource.push({
-            id: 0,
-            title: 'begin to create data ...',
-        });
-        for (var i = 0; i < 5; i++) {
-            this.dataSource.push({
-                id: i + 1,
-                title: `this is ${i}`,
-            })
-        }
-        this.dataSource.push({
-            id: 6,
-            title: 'finish create data ...',
-        });
-        setTimeout(() => {
-            this.setState({
-                list: this.state.list.cloneWithRows(this.dataSource)
-            });
-        }, 1000);
-    }
-
 }
 
-const styles = StyleSheet.create({
+var styles = {
     container: {
-        height: Dimensions.get('window').height,
-        flexDirection: 'column',
-        backgroundColor: '#ffffff',
+        flex: 1,
+        backgroundColor: '#FFF',
     },
-});
+    navBar: {
+        height: 64,
+        backgroundColor: '#CCC'
+    },
+    row: {
+        padding: 10,
+        height: 44,
+    },
+};
