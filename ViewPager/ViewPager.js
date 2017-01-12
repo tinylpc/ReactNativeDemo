@@ -44,6 +44,7 @@ var ViewPager = React.createClass({
         animation: PropTypes.func,
         initialPage: PropTypes.number,
         horizontal: PropTypes.bool,
+        duration: PropTypes.number,
     },
 
     fling: false,
@@ -53,6 +54,7 @@ var ViewPager = React.createClass({
             isLoop: false,
             locked: false,
             horizontal: true,
+            duration: 3000,
             animation: function (animate, toValue, gs) {
                 return Animated.spring(animate,
                     {
@@ -156,7 +158,7 @@ var ViewPager = React.createClass({
                 this.state.scrollValue.setValue(constrainedPage > 0 ? 1 : 0);
             }
 
-            this.childIndex = Math.min(this.childIndex, constrainedPage);
+            this.childIndex = Math.max(this.childIndex, constrainedPage);
             this.fling = false;
         }
 
@@ -168,7 +170,7 @@ var ViewPager = React.createClass({
                 () => {
                     this.movePage(1);
                 },
-                3000
+                this.props.duration
             );
         }
     },
@@ -195,10 +197,12 @@ var ViewPager = React.createClass({
         }
 
         const moved = pageNumber !== this.state.currentPage;
+        console.log('index---' + this.childIndex)
         const scrollStep = (moved ? step : 0) + this.childIndex;
         const nextChildIdx = (pageNumber > 0 || this.props.isLoop) ? 1 : 0;
 
         const postChange = () => {
+            console.log('current ' + pageNumber)
             this.fling = false;
             this.childIndex = nextChildIdx;
             this.state.scrollValue.setValue(nextChildIdx);

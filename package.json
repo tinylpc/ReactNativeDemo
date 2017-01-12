@@ -23,6 +23,6 @@
     "react-native-viewpager": "^0.2.13",
     "react-static-container": "^1.0.1",
     "react-timer-mixin": "^0.13.3",
-    "tinyviewpager": "^1.0.7"
+    "tinyviewpager": "^1.0.8"
   }
 }

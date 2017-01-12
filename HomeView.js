@@ -42,10 +42,10 @@ export default class HomeView extends React.Component {
 
         setTimeout(() => {
 
-                this.setState({
-                    dataSource: this.state.dataSource.cloneWithPages(IMGS2),
-                }),
-                    this.pager.setCurrentPageZero();
+                // this.setState({
+                //     dataSource: this.state.dataSource.cloneWithPages(IMGS2),
+                // }),
+                //     this.pager.setCurrentPageZero();
                 this._facebookTabBar.updatePosition();
             }
             , 5000);
@@ -60,12 +60,12 @@ export default class HomeView extends React.Component {
             <View>
                 <View style={styles.pager}>
                     <ViewPager ref={component => this.pager = component}
-                               initialPage={0}
                                dataSource={this.state.dataSource}
                                renderPage={this._renderPage}
                                horizontal={false}
                                isLoop={true}
-                               autoPlay={true}/>
+                               autoPlay={true}
+                               duration={6000}/>
                 </View>
                 <View style={{height: screenHeight - 300}}>
                     <ScrollableTabView initialPage={0} tabBarUnderlineStyle={{backgroundColor: '#11cab0'}}
